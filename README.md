@@ -108,7 +108,7 @@ Conclusion - Created a robust environment for managing my infrastructure code us
 Alternative/Another Design Solution:
 ====================================
 - Use CloudFormation as IaC instead of Terraform
-- Use GitHub Actions Workflow for CI/CD instead of AWS CodeBuild & CodePipeline
+- Use GitHub Actions Workflow for CI/CD instead of AWS CodeBuild & CodePipeline --> I already created a YAML file for this, refer to "Pull requests"
 - Use AWS Elastic Beanstalk Application & Environment instead of ECS (Elastic Container Service)
 - Publish the CloudFormation template (or even our TF Scripts) in a private registry, since AWS doesn't have a "private registry" specifically for CloudFormation templates like it does for container images (ECR) or serverless applications (SAR), we can effectively create a private repository for our templates using Amazon S3 & control access using AWS Identity & Access Management (IAM) policies. Terraform files can be securely stored in an S3 bucket, and access can be controlled using AWS Identity & Access Management (IAM) policies or pre-signed URLs. This method allows us to share our Terraform configurations in a private & controlled manner.
 
