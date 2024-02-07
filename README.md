@@ -71,13 +71,13 @@ Considerations for Cost Minimization:
 
 Terraform Deployment (Step-By-Step Logic):
 ==========================================
-Step #1: Setup Terraform - Ensure Terraform is installed & configured for the AWS account, will need an AWS access key ID & secret access key for Terraform to manage resources.
-Step #2: Define the Terraform Configuration - Create a set of Terraform configuration files to define the required infrastructure.
-Step #3: Networking Resources - Define VPC, subnets & other networking resources.
-Step #4: ECS Cluster & Service - Define ECS cluster & a service	to run the Java application container, this includes defining a task definition with the container image & resources.
-Step #5: RDS MySQL Database - Set up RDS instance for MySQL, need to define the instance size, engine version & credentials.
-Step #6: WAF Configuration - Attach a WAF to the load balancer or API Gateway, defining rules to protect against common web exploits. To protect the application with AWS WAF, need to attach a web ACL to the load balancer, thus the WAF setup involves creating a web ACL with rules that define the desired web traffic filtering.
-Step #7: CI/CD Integration - Since Terraform does not directly manage CI/CD processes, then we can integrate into AWS CodeBuild & AWS CodePipeline to automate the deployment process, and of course we have our application code stored in a GitHub repository.
+- Step #1: Setup Terraform - Ensure Terraform is installed & configured for the AWS account, will need an AWS access key ID & secret access key for Terraform to manage resources.
+- Step #2: Define the Terraform Configuration - Create a set of Terraform configuration files to define the required infrastructure.
+- Step #3: Networking Resources - Define VPC, subnets & other networking resources.
+- Step #4: ECS Cluster & Service - Define ECS cluster & a service	to run the Java application container, this includes defining a task definition with the container image & resources.
+- Step #5: RDS MySQL Database - Set up RDS instance for MySQL, need to define the instance size, engine version & credentials.
+- Step #6: WAF Configuration - Attach a WAF to the load balancer or API Gateway, defining rules to protect against common web exploits. To protect the application with AWS WAF, need to attach a web ACL to the load balancer, thus the WAF setup involves creating a web ACL with rules that define the desired web traffic filtering.
+- Step #7: CI/CD Integration - Since Terraform does not directly manage CI/CD processes, then we can integrate into AWS CodeBuild & AWS CodePipeline to automate the deployment process, and of course we have our application code stored in a GitHub repository.
 
 
 Publishing To A Private Repository:
@@ -108,6 +108,7 @@ Conclusion - Created a robust environment for managing my infrastructure code us
 Alternative/Another Design Solution:
 ====================================
 - Use CloudFormation as IaC instead of Terraform
+- Use GitHub Actions Workflow for CI/CD instead of AWS CodeBuild & CodePipeline
 - Use AWS Elastic Beanstalk Application & Environment instead of ECS (Elastic Container Service)
 - Publish the CloudFormation template (or even our TF Scripts) in a private registry, since AWS doesn't have a "private registry" specifically for CloudFormation templates like it does for container images (ECR) or serverless applications (SAR), we can effectively create a private repository for our templates using Amazon S3 & control access using AWS Identity & Access Management (IAM) policies. Terraform files can be securely stored in an S3 bucket, and access can be controlled using AWS Identity & Access Management (IAM) policies or pre-signed URLs. This method allows us to share our Terraform configurations in a private & controlled manner.
 
