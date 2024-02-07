@@ -64,8 +64,8 @@ resource "aws_db_instance" "my_db" {
 
 # AWS WAFv2 Web ACL for protecting the application
 resource "aws_wafv2_web_acl" "example" {
-  name        = "example-web-acl"
-  description = "Example web ACL"
+  name        = "my-web-acl"
+  description = "My web ACL"
   scope       = "REGIONAL"
 
   default_action {
@@ -96,7 +96,7 @@ resource "aws_wafv2_web_acl" "example" {
 
   visibility_config {
     cloudwatch_metrics_enabled = false
-    metric_name                = "exampleWebACL"
+    metric_name                = "myWebACL"
     sampled_requests_enabled   = false
   }
 }
@@ -156,8 +156,8 @@ resource "aws_codepipeline" "example" {
       output_artifacts = ["source_output"]
 
       configuration = {
-        Owner      = "your-github-username"
-        Repo       = "your-repository-name"
+        Owner      = "my-github-username"
+        Repo       = "my-repository-name"
         Branch     = "main"
         OAuthToken = var.github_token
       }
